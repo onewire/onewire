@@ -7,21 +7,20 @@
 	<version>1.-0-SNAPSHOT</version>
 	<name>onewire</name>
 	<packaging>pom</packaging>
-	<profiles>
-		<profile>
-			<id>java5</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<maven.compiler.compilerVersion>5</maven.compiler.compilerVersion>
-				<maven.compiler.source>5</maven.compiler.source>
-				<maven.compiler.target>5</maven.compiler.target>
-			</properties>
-		</profile>
-	</profiles>
 	<modules>
 		<module>core</module>
 		<module>owapi</module>
 	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
