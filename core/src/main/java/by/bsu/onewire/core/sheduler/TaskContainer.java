@@ -12,6 +12,8 @@ public class TaskContainer {
 
     private TaskProperties properties;
 
+    private long startTime;
+
     public TaskContainer(Task task, TaskProperties properties) {
         this.properties = properties;
         this.task = task;
@@ -31,6 +33,14 @@ public class TaskContainer {
 
     public void setProperties(TaskProperties properties) {
         this.properties = properties;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
 }
