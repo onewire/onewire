@@ -15,6 +15,9 @@ public class SimpleSchedulerImplTest {
     @Before
     public void initSheduler() {
         scheduler = new SimpleSchedulerImpl();
+        TaskTimeProcessor processor = mock(TaskTimeProcessor.class);
+        when(processor.isTaskTime(any(TaskContainer.class))).thenReturn(true);
+        scheduler.setTimeProcessor(processor);
     }
 
     /**

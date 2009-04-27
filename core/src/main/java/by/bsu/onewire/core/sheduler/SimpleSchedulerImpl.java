@@ -11,6 +11,8 @@ public class SimpleSchedulerImpl implements Scheduler {
     protected BlockingQueue<TaskContainer> queue;
     protected List<TaskContainer> repeatTasks;
 
+    protected TaskTimeProcessor timeProcessor;
+
     /**
      * Public constructor, create queue.
      */
@@ -37,14 +39,15 @@ public class SimpleSchedulerImpl implements Scheduler {
             e.printStackTrace();
         }
     }
-    
-    protected void processRepeatTasks(){
-        Iterator<TaskContainer> iterator  = repeatTasks.iterator();
-        while(iterator.hasNext()){
+
+    protected void processRepeatTasks() {
+        Iterator<TaskContainer> iterator = repeatTasks.iterator();
+        while (iterator.hasNext()) {
             TaskContainer container = iterator.next();
-            if(readyForExecution(container)){
-                if(queue.offer(container)){
-                iterator.remove();
+            if (readyForExecution(container)) {
+                if (queue.offer(container)) {
+                    iterator.remove();
+                    timeProcessor.updateTaskStartTime(container);
                 }
             }
         }
@@ -68,7 +71,7 @@ public class SimpleSchedulerImpl implements Scheduler {
      * Check if task is ready for execution.
      */
     protected boolean readyForExecution(TaskContainer taskContainer) {
-        return true;
+        return timeProcessor.isTaskTime(taskContainer);
     }
 
     @Override
@@ -89,4 +92,13 @@ public class SimpleSchedulerImpl implements Scheduler {
         properties.setRepeat(false);
         return properties;
     }
+
+    public TaskTimeProcessor getTimeProcessor() {
+        return timeProcessor;
+    }
+
+    public void setTimeProcessor(TaskTimeProcessor timeProcessor) {
+        this.timeProcessor = timeProcessor;
+    }
+
 }
