@@ -1,18 +1,20 @@
 package by.bsu.onewire.core.sheduler;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
 import static org.mockito.Mockito.*;
 
-public class SimpleShedulerImplTest {
+public class SimpleSchedulerImplTest {
 
-    protected SimpleShedulerImpl sheduler;
+    protected SimpleSchedulerImpl scheduler;
 
     @Before
     public void initSheduler() {
-        sheduler = new SimpleShedulerImpl();
+        scheduler = new SimpleSchedulerImpl();
     }
 
     /**
@@ -21,8 +23,8 @@ public class SimpleShedulerImplTest {
     @Test
     public void singleTaskExecution() {
         Task task = mock(Task.class);
-        sheduler.addTask(task);
-        sheduler.executeNextTask();
+        scheduler.addTask(task);
+        scheduler.executeNextTask();
 
         verify(task).execute();
     }
@@ -31,23 +33,34 @@ public class SimpleShedulerImplTest {
      * Add a few tasks into scheduler and check if this tasks execute in correct
      * order.
      */
-    public void multipluTasksExecution() {
+    @Test
+    public void multiplyTasksExecution() {
         Task one = mock(Task.class);
         Task two = mock(Task.class);
         Task three = mock(Task.class);
         
-        sheduler.addTask(one);
-        sheduler.addTask(two);
-        sheduler.addTask(three);
+        scheduler.addTask(one);
+        scheduler.addTask(two);
+        scheduler.addTask(three);
         
-        sheduler.executeNextTask();
-        sheduler.executeNextTask();
-        sheduler.executeNextTask();
+        scheduler.executeNextTask();
+        scheduler.executeNextTask();
+        scheduler.executeNextTask();
         
         InOrder inOrder = inOrder(one, two, three);
         inOrder.verify(one).execute();
         inOrder.verify(two).execute();
         inOrder.verify(three).execute();
         
+    }
+    
+    /**
+     * Check if scheduler return correct default <code>TaskProperties</code>
+     */
+    public void defaultProperties(){
+        TaskProperties expected = new TaskProperties();
+        expected.setRepeat(false);
+        TaskProperties actual = SimpleSchedulerImpl.getDefaultTaskProperties();
+        Assert.assertEquals(expected, actual);
     }
 }
