@@ -1,11 +1,16 @@
 package by.bsu.onewire.core.sheduler;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class SimpleSchedulerImplTest {
@@ -96,6 +101,70 @@ public class SimpleSchedulerImplTest {
         order.verify(second).execute();
         order.verify(first).execute();
     }
+    
+    @Test
+    public void multiThreadTest() throws InterruptedException{
+        Task first = mock(Task.class);
+        Task second = mock(Task.class);
+        
+        Thread executionThread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                for(int i=0;i<3;i++){
+                    scheduler.executeNextTask();
+                }
+            }
+        });
+        executionThread.start();
+
+        scheduler.addTask(first, new TaskProperties(true));
+        scheduler.addTask(second);
+        Thread.sleep(100);
+        scheduler.processRepeatTasks();
+        Thread.sleep(100);
+        scheduler.processRepeatTasks();
+
+        executionThread.join(5000);
+        InOrder order = inOrder(first, second);
+        order.verify(first).execute();
+        order.verify(second).execute();
+        order.verify(first).execute();
+    }
+    
+    /**
+     * Check if two task execute in correct sequence, if repeat option has been
+     * turned on for first task.
+     */
+    @Test
+    public void twoTasksDelayRepeatSequence() throws InterruptedException {
+        Task first = mock(Task.class);
+        Task second = mock(Task.class);
+
+        TaskTimeProcessorImpl processor = new TaskTimeProcessorImpl();
+        TimeManager timeManager = mock(TimeManager.class);
+        when(timeManager.getCurremtTime()).thenReturn(0L, 1L, 103L, 103L, 105L, 203L, 203L);
+        processor.setTimeManager(timeManager);
+        scheduler.setTimeProcessor(processor);
+        
+        scheduler.addTask(first, new TaskProperties(true, 200L));
+        scheduler.addTask(second, new TaskProperties(true, 100L));
+        scheduler.processRepeatTasks();
+        scheduler.processRepeatTasks();
+        
+        List<Task> expected = new ArrayList<Task>(4);
+        expected.add(first);
+        expected.add(second);
+        expected.add(second);
+        expected.add(first);
+        
+        List<Task> actual = new ArrayList<Task>(4);
+        List<TaskContainer> list = queueToList(scheduler.queue);
+        for (TaskContainer taskContainer : list) {
+            actual.add(taskContainer.getTask());
+        }
+        assertEquals(expected, actual);
+        
+    }
 
     /**
      * Check if scheduler return correct default <code>TaskProperties</code>
@@ -106,5 +175,25 @@ public class SimpleSchedulerImplTest {
         expected.setRepeat(false);
         TaskProperties actual = SimpleSchedulerImpl.getDefaultTaskProperties();
         Assert.assertEquals(expected, actual);
+    }
+    
+    public Thread createExecutionThread(){
+        Thread executionThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                scheduler.executeNextTask();
+            }
+        });
+        return executionThread;
+    }
+    
+    public List<TaskContainer> queueToList(Queue<TaskContainer> queue)
+    {
+        List<TaskContainer> list = new ArrayList<TaskContainer>(queue.size());
+        while(!queue.isEmpty())
+        {
+            list.add(queue.poll());
+        }
+        return list;
     }
 }

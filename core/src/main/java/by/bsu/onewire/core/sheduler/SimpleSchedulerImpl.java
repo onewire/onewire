@@ -32,22 +32,26 @@ public class SimpleSchedulerImpl implements Scheduler {
             TaskContainer container = queue.take();
             Task task = container.getTask();
             executeTask(task);
-            if (needRepeat(container)) {
-                repeatTasks.add(container);
-            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     protected void processRepeatTasks() {
-        Iterator<TaskContainer> iterator = repeatTasks.iterator();
-        while (iterator.hasNext()) {
-            TaskContainer container = iterator.next();
-            if (readyForExecution(container)) {
-                if (queue.offer(container)) {
-                    iterator.remove();
+        synchronized (repeatTasks) {
+            Iterator<TaskContainer> iterator = repeatTasks.iterator();
+            while (iterator.hasNext()) {
+                TaskContainer container = iterator.next();
+                if (readyForExecution(container)) {
+                    if(!needRepeat(container)){
+                        iterator.remove();
+                    }
                     timeProcessor.updateTaskStartTime(container);
+                    try {
+                        queue.put(container);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -77,7 +81,14 @@ public class SimpleSchedulerImpl implements Scheduler {
     @Override
     public void addTask(Task task, TaskProperties properties) {
         try {
-            queue.put(new TaskContainer(task, properties));
+            TaskContainer container = new TaskContainer(task, properties);
+            if (needRepeat(container)) {
+                timeProcessor.updateTaskStartTime(container);
+                synchronized (repeatTasks) {
+                    repeatTasks.add(container);
+                }
+            }
+            queue.put(container);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

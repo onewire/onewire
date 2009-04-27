@@ -21,6 +21,12 @@ public class TaskProperties {
         super();
         this.repeat = repeat;
     }
+    
+    public TaskProperties(boolean repeat, long delay) {
+        super();
+        this.repeat = repeat;
+        this.delay = delay;
+    }
 
     /**
      * Check if task should be repeated.
@@ -46,11 +52,11 @@ public class TaskProperties {
     /**
      * Set time interval before two executions of the task
      * 
-     * @param interval
-     *            the interval time in millis
+     * @param delay
+     *            the delay time in milliseconds
      */
-    public void setDelay(long interval) {
-        this.delay = interval;
+    public void setDelay(long delay) {
+        this.delay = delay;
     }
 
     @Override
