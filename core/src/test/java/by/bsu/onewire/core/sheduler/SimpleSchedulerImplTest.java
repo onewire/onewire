@@ -55,8 +55,25 @@ public class SimpleSchedulerImplTest {
     }
     
     /**
+     * Check if single task with repeat option, execute correct number of times.
+     */
+    @Test
+    public void singleTaskRepeatExecution() {
+        Task task = mock(Task.class);
+        scheduler.addTask(task, new TaskProperties(true));
+        scheduler.executeNextTask();
+        scheduler.processRepeatTasks();
+        scheduler.executeNextTask();
+        scheduler.processRepeatTasks();
+        scheduler.executeNextTask();
+
+        verify(task, times(3)).execute();
+    }
+    
+    /**
      * Check if scheduler return correct default <code>TaskProperties</code>
      */
+    @Test
     public void defaultProperties(){
         TaskProperties expected = new TaskProperties();
         expected.setRepeat(false);
