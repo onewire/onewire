@@ -9,5 +9,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>core</module>
+        <module>owapi</module>
     </modules>
 </project>
