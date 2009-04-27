@@ -38,22 +38,22 @@ public class SimpleSchedulerImplTest {
         Task one = mock(Task.class);
         Task two = mock(Task.class);
         Task three = mock(Task.class);
-        
+
         scheduler.addTask(one);
         scheduler.addTask(two);
         scheduler.addTask(three);
-        
+
         scheduler.executeNextTask();
         scheduler.executeNextTask();
         scheduler.executeNextTask();
-        
+
         InOrder inOrder = inOrder(one, two, three);
         inOrder.verify(one).execute();
         inOrder.verify(two).execute();
         inOrder.verify(three).execute();
-        
+
     }
-    
+
     /**
      * Check if single task with repeat option, execute correct number of times.
      */
@@ -69,12 +69,36 @@ public class SimpleSchedulerImplTest {
 
         verify(task, times(3)).execute();
     }
-    
+
+    /**
+     * Check if two task execute in correct sequence, if repeat option has been
+     * turned on for first task.
+     */
+    @Test
+    public void twoTasksRepeatSequence() {
+        Task first = mock(Task.class);
+        Task second = mock(Task.class);
+
+        scheduler.addTask(first, new TaskProperties(true));
+        scheduler.addTask(second);
+
+        scheduler.executeNextTask();
+        scheduler.processRepeatTasks();
+        scheduler.executeNextTask();
+        scheduler.processRepeatTasks();
+        scheduler.executeNextTask();
+
+        InOrder order = inOrder(first, second);
+        order.verify(first).execute();
+        order.verify(second).execute();
+        order.verify(first).execute();
+    }
+
     /**
      * Check if scheduler return correct default <code>TaskProperties</code>
      */
     @Test
-    public void defaultProperties(){
+    public void defaultProperties() {
         TaskProperties expected = new TaskProperties();
         expected.setRepeat(false);
         TaskProperties actual = SimpleSchedulerImpl.getDefaultTaskProperties();
