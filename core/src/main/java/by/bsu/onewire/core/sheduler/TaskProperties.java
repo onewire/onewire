@@ -11,7 +11,7 @@ public class TaskProperties {
 
     private boolean repeat;
 
-    private long interval;
+    private long delay;
 
     public TaskProperties() {
 
@@ -39,8 +39,8 @@ public class TaskProperties {
     /**
      * Get interval before task should be repeated.
      */
-    public long getInterval() {
-        return interval;
+    public long getDelay() {
+        return delay;
     }
 
     /**
@@ -49,8 +49,8 @@ public class TaskProperties {
      * @param interval
      *            the interval time in millis
      */
-    public void setInterval(long interval) {
-        this.interval = interval;
+    public void setDelay(long interval) {
+        this.delay = interval;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class TaskProperties {
             if (this.repeat != anotherProperties.repeat) {
                 return false;
             }
-            if (this.interval != anotherProperties.interval) {
+            if (this.delay != anotherProperties.delay) {
                 return false;
             }
             return true;

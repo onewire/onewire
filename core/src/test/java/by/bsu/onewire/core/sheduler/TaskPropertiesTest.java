@@ -27,19 +27,19 @@ public class TaskPropertiesTest {
         TaskProperties first = new TaskProperties();
         final int interval = 10;
         first.setRepeat(false);
-        first.setInterval(interval);
+        first.setDelay(interval);
         TaskProperties second = new TaskProperties();
         second.setRepeat(false);
-        second.setInterval(interval);
+        second.setDelay(interval);
         Assert.assertTrue(first.equals(second));
         
         final int secondInterval = 10;
         first = new TaskProperties();
         first.setRepeat(true);
-        first.setInterval(secondInterval);
+        first.setDelay(secondInterval);
         second = new TaskProperties();
         second.setRepeat(true);
-        second.setInterval(secondInterval);
+        second.setDelay(secondInterval);
         Assert.assertTrue(first.equals(second));
     }
     
@@ -52,9 +52,9 @@ public class TaskPropertiesTest {
         Assert.assertFalse(first.equals(second));
         
         first = new TaskProperties();
-        first.setInterval(10);
+        first.setDelay(10);
         second = new TaskProperties();
-        second.setInterval(20);
+        second.setDelay(20);
         Assert.assertFalse(first.equals(second));
     }
 }
