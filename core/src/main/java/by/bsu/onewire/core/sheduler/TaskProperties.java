@@ -10,11 +10,13 @@ package by.bsu.onewire.core.sheduler;
 public class TaskProperties {
 
     private boolean repeat;
-    
-    public TaskProperties(){
-        
+
+    private long interval;
+
+    public TaskProperties() {
+
     }
-    
+
     public TaskProperties(boolean repeat) {
         super();
         this.repeat = repeat;
@@ -34,6 +36,23 @@ public class TaskProperties {
         this.repeat = repeat;
     }
 
+    /**
+     * Get interval before task should be repeated.
+     */
+    public long getInterval() {
+        return interval;
+    }
+
+    /**
+     * Set time interval before two executions of the task
+     * 
+     * @param interval
+     *            the interval time in millis
+     */
+    public void setInterval(long interval) {
+        this.interval = interval;
+    }
+
     @Override
     public boolean equals(Object anObject) {
         if (this == anObject) {
@@ -41,9 +60,13 @@ public class TaskProperties {
         }
         if (anObject instanceof TaskProperties) {
             TaskProperties anotherProperties = (TaskProperties) anObject;
-            boolean result = true;
-            result &= (this.repeat == anotherProperties.repeat);
-            return result;
+            if (this.repeat != anotherProperties.repeat) {
+                return false;
+            }
+            if (this.interval != anotherProperties.interval) {
+                return false;
+            }
+            return true;
         }
         return false;
     }

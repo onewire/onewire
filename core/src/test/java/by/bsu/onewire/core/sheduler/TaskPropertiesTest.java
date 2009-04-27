@@ -25,15 +25,21 @@ public class TaskPropertiesTest {
     @Test
     public void testEqualObjectObject(){
         TaskProperties first = new TaskProperties();
+        final int interval = 10;
         first.setRepeat(false);
+        first.setInterval(interval);
         TaskProperties second = new TaskProperties();
         second.setRepeat(false);
+        second.setInterval(interval);
         Assert.assertTrue(first.equals(second));
         
+        final int secondInterval = 10;
         first = new TaskProperties();
         first.setRepeat(true);
+        first.setInterval(secondInterval);
         second = new TaskProperties();
         second.setRepeat(true);
+        second.setInterval(secondInterval);
         Assert.assertTrue(first.equals(second));
     }
     
@@ -46,9 +52,9 @@ public class TaskPropertiesTest {
         Assert.assertFalse(first.equals(second));
         
         first = new TaskProperties();
-        first.setRepeat(false);
+        first.setInterval(10);
         second = new TaskProperties();
-        second.setRepeat(true);
+        second.setInterval(20);
         Assert.assertFalse(first.equals(second));
     }
 }
