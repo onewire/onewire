@@ -1,5 +1,12 @@
 package by.bsu.onewire.core.sheduler;
 
+/**
+ * Container class, use by scheduler to keep task, task properties and other
+ * task information that uses for correct task processing.
+ * 
+ * @author Aliaksandr Zlobich
+ * 
+ */
 public class TaskContainer {
     private Task task;
 
