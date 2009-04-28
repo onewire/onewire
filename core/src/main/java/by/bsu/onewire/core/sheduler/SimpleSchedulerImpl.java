@@ -21,12 +21,39 @@ public class SimpleSchedulerImpl implements Scheduler {
         repeatTasks = new LinkedList<TaskContainer>();
     }
 
+    /**
+     * Add task with default properties in queue.
+     */
     @Override
     public void addTask(Task task) {
         addTask(task, getDefaultTaskProperties());
     }
 
+    /**
+     * Add task in queue. This task will be executed later in 1-Wire context.
+     * 
+     * @param properties
+     *            bean object that should contain task execution properties
+     */
     @Override
+    public void addTask(Task task, TaskProperties properties) {
+        try {
+            TaskContainer container = new TaskContainer(task, properties);
+            if (needRepeat(container)) {
+                timeProcessor.updateTaskStartTime(container);
+                synchronized (repeatTasks) {
+                    repeatTasks.add(container);
+                }
+            }
+            queue.put(container);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Execute next task from queue.
+     */
     public void executeNextTask() {
         try {
             TaskContainer container = queue.take();
@@ -37,13 +64,17 @@ public class SimpleSchedulerImpl implements Scheduler {
         }
     }
 
+    /**
+     * Analyze repeat tasks list and add in queue tasks that re ready for
+     * execution.
+     */
     protected void processRepeatTasks() {
         synchronized (repeatTasks) {
             Iterator<TaskContainer> iterator = repeatTasks.iterator();
             while (iterator.hasNext()) {
                 TaskContainer container = iterator.next();
                 if (readyForExecution(container)) {
-                    if(!needRepeat(container)){
+                    if (!needRepeat(container)) {
                         iterator.remove();
                     }
                     timeProcessor.updateTaskStartTime(container);
@@ -76,22 +107,6 @@ public class SimpleSchedulerImpl implements Scheduler {
      */
     protected boolean readyForExecution(TaskContainer taskContainer) {
         return timeProcessor.isTaskTime(taskContainer);
-    }
-
-    @Override
-    public void addTask(Task task, TaskProperties properties) {
-        try {
-            TaskContainer container = new TaskContainer(task, properties);
-            if (needRepeat(container)) {
-                timeProcessor.updateTaskStartTime(container);
-                synchronized (repeatTasks) {
-                    repeatTasks.add(container);
-                }
-            }
-            queue.put(container);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

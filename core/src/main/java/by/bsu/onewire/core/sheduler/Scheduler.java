@@ -22,8 +22,4 @@ public interface Scheduler {
      */
     void addTask(Task task, TaskProperties properties);
 
-    /**
-     * Execute next task from queue.
-     */
-    void executeNextTask();
 }
