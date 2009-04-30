@@ -2,6 +2,13 @@ package by.bsu.onewire.core.modules.monitoring.sensor;
 
 import by.bsu.onewire.core.device.DeviceType;
 
+/**
+ * Plain sensor implementation, just bean class. It doesn't do any actions like
+ * read device.
+ * 
+ * @author Aliaksandr Zlobich
+ * 
+ */
 public class PlainSensor implements Sensor {
 
     private SensorType sensorType;
