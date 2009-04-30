@@ -19,6 +19,7 @@
         <module>core</module>
         <module>owapi</module>
         <module>app</module>
+        <module>webui</module>
     </modules>
     <build>
         <plugins>
@@ -39,11 +40,18 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
         <profile>
-            <id>integration</id>
+        <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -60,4 +68,4 @@
             </build>
         </profile>
     </profiles>
-</project>
+    </project>
