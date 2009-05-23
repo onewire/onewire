@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+   "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl">
+    <property name="adapterName" value="{DS9490}" />
+    <property name="portName" value="USB1" />
+  </bean>
+</beans>
