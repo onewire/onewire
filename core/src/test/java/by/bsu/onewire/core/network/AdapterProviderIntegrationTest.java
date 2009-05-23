@@ -17,7 +17,7 @@ public class AdapterProviderIntegrationTest {
 
     @Before
     public void initContext() {
-        factory = new XmlBeanFactory(new ClassPathResource("adapter-test-app-context.xml"));
+        factory = new XmlBeanFactory(new ClassPathResource("test-app-context.xml"));
     }
     
     @Test

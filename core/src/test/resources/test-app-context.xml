@@ -2,7 +2,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
    "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl">
+  <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl" singleton="true" >
     <property name="adapterName" value="{DS9490}" />
     <property name="portName" value="USB1" />
   </bean>
