@@ -2,8 +2,26 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
    "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl" singleton="true" >
+  <import resource="signaling-module-context.xml"/>
+  <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl"
+    singleton="true">
     <property name="adapterName" value="{DS9490}" />
     <property name="portName" value="USB1" />
+  </bean>
+  <bean id="searchExtension"
+    class="by.bsu.onewire.core.network.extensions.SearchExtentionImpl"
+    singleton="true">
+    <property name="adapter">
+      <bean
+        class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+        <property name="targetObject" ref="adapterProvider" />
+        <property name="propertyPath" value="adapter" />
+      </bean>
+    </property>
+  </bean>
+  <bean id="networkManager" class="by.bsu.onewire.core.network.NetworkManagerImpl"
+    singleton="true">
+    <property name="adapterProvider" ref="adapterProvider" />
+    <property name="searchExtension" ref="searchExtension" />
   </bean>
 </beans>
