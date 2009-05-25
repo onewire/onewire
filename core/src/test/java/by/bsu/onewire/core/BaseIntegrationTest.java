@@ -14,7 +14,7 @@ public class BaseIntegrationTest {
 
     @BeforeClass
     public static void initContext() throws OneWireIOException, OneWireException {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String []{"test-app-context.xml"});
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(new String []{"test-app-context.xml", "signaling-module-context.xml"});
         ctx.registerShutdownHook();
         factory = ctx;
     }

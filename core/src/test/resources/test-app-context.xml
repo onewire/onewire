@@ -2,7 +2,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
    "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <import resource="signaling-module-context.xml"/>
   <bean id="adapterProvider" class="by.bsu.onewire.core.network.AdapterProviderImpl"
     singleton="true">
     <property name="adapterName" value="{DS9490}" />
