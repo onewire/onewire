@@ -11,6 +11,7 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import by.bsu.onewire.core.BaseIntegrationTest;
 import by.bsu.onewire.core.network.extensions.SearchExtension;
 
 import com.dalsemi.onewire.OneWireException;

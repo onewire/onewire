@@ -8,7 +8,9 @@ import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.adapter.DSPortAdapter;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 
+import by.bsu.onewire.core.BaseIntegrationTest;
 import by.bsu.onewire.core.modules.signaling.SignalingElement;
+import by.bsu.onewire.core.modules.signaling.SignalingModule;
 import by.bsu.onewire.core.modules.signaling.UpdateSignalingTask;
 
 public class SignalingModuleIntegrationTest extends BaseIntegrationTest {
@@ -26,5 +28,11 @@ public class SignalingModuleIntegrationTest extends BaseIntegrationTest {
         task.setNetworkManager(manager);
         task.execute();
         assertFalse(element.isAlarm());
+    }
+    
+    @Test
+    public void testModuleCreation(){
+       SignalingModule module = (SignalingModule) factory.getBean("signalingModule");
+       assertNotNull(module);
     }
 }

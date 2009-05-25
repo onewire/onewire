@@ -1,25 +1,17 @@
 package by.bsu.onewire.core.network;
 
-import static org.junit.Assert.*;
-import org.junit.Before;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
+
+import by.bsu.onewire.core.BaseIntegrationTest;
 
 import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.adapter.DSPortAdapter;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 
-public class AdapterProviderIntegrationTest {
+public class AdapterProviderIntegrationTest extends BaseIntegrationTest{
 
-    private BeanFactory factory;
-
-    @Before
-    public void initContext() {
-        factory = new XmlBeanFactory(new ClassPathResource("test-app-context.xml"));
-    }
-    
     @Test
     public void testAdapterProviderInit() throws OneWireIOException, OneWireException
     {

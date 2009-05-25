@@ -8,4 +8,13 @@
     <property name="keyAddressString" value="1B0000001EDAF205"/>
     <property name="labelAddressString" value="F000000AC6CD0301"/>
   </bean>
+  
+  <bean name="signalingModule" class="by.bsu.onewire.core.modules.signaling.SignalingModuleImpl" singleton="true" init-method="initUpdateTasks">
+    <property name="scheduler" ref="scheduler"/>
+    <property name="elements">
+      <list>
+        <ref bean="signalingElement"/>
+      </list>
+    </property>
+  </bean>
 </beans>

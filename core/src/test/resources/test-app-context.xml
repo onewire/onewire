@@ -10,7 +10,7 @@
   </bean>
   <bean id="searchExtension"
     class="by.bsu.onewire.core.network.extensions.SearchExtentionImpl"
-    singleton="true">
+    singleton="true" init-method="initExtention">
     <property name="adapter">
       <bean
         class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
@@ -19,9 +19,19 @@
       </bean>
     </property>
   </bean>
-  <bean id="networkManager" class="by.bsu.onewire.core.network.NetworkManagerImpl"
-    singleton="true">
+  <bean id="networkManager" class="by.bsu.onewire.core.network.NetworkManagerImpl"  singleton="true">
     <property name="adapterProvider" ref="adapterProvider" />
     <property name="searchExtension" ref="searchExtension" />
+  </bean>
+  
+  <bean id="timeManager" class="by.bsu.onewire.core.sheduler.TimeManagerImpl" />
+  
+  <bean id="timeProcessor" class="by.bsu.onewire.core.sheduler.TaskTimeProcessorImpl">
+    <property name="timeManager" ref="timeManager"/>
+  </bean>
+  
+  <bean id="scheduler" class="by.bsu.onewire.core.sheduler.SimpleSchedulerImpl" singleton="true">
+    <property name="timeProcessor" ref="timeProcessor"/>
+    <property name="networkManager" ref="networkManager"/>
   </bean>
 </beans>

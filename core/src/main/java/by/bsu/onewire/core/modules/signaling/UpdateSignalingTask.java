@@ -3,32 +3,21 @@ package by.bsu.onewire.core.modules.signaling;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import by.bsu.onewire.core.network.extensions.SearchExtension;
+import by.bsu.onewire.core.sheduler.TaskBase;
+
 import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 import com.dalsemi.onewire.container.OneWireContainer;
 import com.dalsemi.onewire.container.SwitchContainer;
 
-import by.bsu.onewire.core.network.NetworkManager;
-import by.bsu.onewire.core.network.extensions.SearchExtension;
-import by.bsu.onewire.core.sheduler.Task;
-
-public class UpdateSignalingTask implements Task {
+public class UpdateSignalingTask extends TaskBase {
     private Log log = LogFactory.getLog(UpdateSignalingTask.class);
-
-    private NetworkManager networkManager;
 
     private SignalingElement element;
 
     public UpdateSignalingTask(SignalingElement element) {
         this.element = element;
-    }
-
-    public NetworkManager getNetworkManager() {
-        return networkManager;
-    }
-
-    public void setNetworkManager(NetworkManager networkManager) {
-        this.networkManager = networkManager;
     }
 
     public SignalingElement getElement() {
@@ -42,6 +31,9 @@ public class UpdateSignalingTask implements Task {
     @Override
     public void execute() {
         final SearchExtension search = networkManager.getSearchExtension();
+        if (log.isDebugEnabled()) {
+            log.debug("update signaling element: " + element.toString());
+        }
         if (!element.isEnabled()) {
             return;
         }
@@ -58,6 +50,9 @@ public class UpdateSignalingTask implements Task {
             }
             final boolean labelPresent = search.isDevicePresent(element.getLabelAddress());
             element.setAlarm(!labelPresent);
+            if (!labelPresent && log.isInfoEnabled()) {
+                log.info("Security module activate alarm: " + element);
+            }
         } catch (OneWireIOException e) {
             log.error("Check signaling crash.", e);
         } catch (OneWireException e) {

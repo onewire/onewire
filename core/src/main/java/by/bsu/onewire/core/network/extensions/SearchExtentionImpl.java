@@ -22,6 +22,10 @@ public class SearchExtentionImpl extends ExtentionBase implements SearchExtensio
     public SearchExtentionImpl() {
         devices = new HashMap<Long, OWPath>();
     }
+    
+    public void initExtention() throws OneWireIOException, OneWireException{
+        search();
+    }
 
     @Override
     public OneWireContainer getDevice(long address) {
@@ -65,7 +69,7 @@ public class SearchExtentionImpl extends ExtentionBase implements SearchExtensio
         final NetworkDeviceMonitor networkDeviceMonitor = new NetworkDeviceMonitor(adapter);
         networkDeviceMonitor.setBranchAutoSearching(false);
         monitor = networkDeviceMonitor;
-        monitor.setMaxErrorCount(2);
+        monitor.setMaxErrorCount(1);
     }
 
     @Override

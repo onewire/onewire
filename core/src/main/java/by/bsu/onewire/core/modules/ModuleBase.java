@@ -9,7 +9,7 @@ import by.bsu.onewire.core.sheduler.Scheduler;
  * 
  */
 public class ModuleBase {
-    private Scheduler scheduler;
+    protected Scheduler scheduler;
 
     public Scheduler getScheduler() {
         return scheduler;

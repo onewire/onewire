@@ -61,4 +61,21 @@ public class SignalingElement implements Serializable{
         this.labelAddress = labelAddress;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer buffer = new StringBuffer();
+        
+        buffer.append("((id=");
+        buffer.append(id);
+        buffer.append("), (key=");
+        buffer.append(Address.toString(keyAddress));
+        buffer.append("), (label=");
+        buffer.append(Address.toString(labelAddress));
+        buffer.append("), (enabled=");
+        buffer.append(enabled);
+        buffer.append("), (alarm=");
+        buffer.append(alarm);
+        buffer.append("))");
+        return buffer.toString();
+    }
 }

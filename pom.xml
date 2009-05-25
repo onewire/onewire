@@ -18,6 +18,7 @@
     <modules>
         <module>core</module>
         <module>owapi</module>
+        <module>app</module>
     </modules>
     <build>
         <plugins>
@@ -51,6 +52,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>none</exclude>
+                                <exclude>**/BaseIntegrationTest.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>

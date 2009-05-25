@@ -6,12 +6,23 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import com.dalsemi.onewire.OneWireException;
+import com.dalsemi.onewire.adapter.OneWireIOException;
+
+import by.bsu.onewire.core.network.NetworkManager;
+
 public class SimpleSchedulerImpl implements Scheduler {
+    private Log log = LogFactory.getLog(SimpleSchedulerImpl.class);
 
     protected BlockingQueue<TaskContainer> queue;
     protected List<TaskContainer> repeatTasks;
 
     protected TaskTimeProcessor timeProcessor;
+    
+    protected NetworkManager networkManager;
 
     /**
      * Public constructor, create queue.
@@ -47,8 +58,16 @@ public class SimpleSchedulerImpl implements Scheduler {
             }
             queue.put(container);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("Task wait interrupted",e);
         }
+    }
+    
+    public NetworkManager getNetworkManager() {
+        return networkManager;
+    }
+
+    public void setNetworkManager(NetworkManager networkManager) {
+        this.networkManager = networkManager;
     }
 
     /**
@@ -68,7 +87,7 @@ public class SimpleSchedulerImpl implements Scheduler {
      * Analyze repeat tasks list and add in queue tasks that re ready for
      * execution.
      */
-    protected void processRepeatTasks() {
+    public void processRepeatTasks() {
         synchronized (repeatTasks) {
             Iterator<TaskContainer> iterator = repeatTasks.iterator();
             while (iterator.hasNext()) {
@@ -92,7 +111,17 @@ public class SimpleSchedulerImpl implements Scheduler {
      * Execute task in 1-Wire context.
      */
     protected void executeTask(Task task) {
-        task.execute();
+        task.setNetworkManager(networkManager);
+        try {
+            networkManager.startSession();
+            task.execute();
+            networkManager.endSession();
+        } catch (OneWireIOException e) {
+            log.error("Task execution failed.", e);
+        } catch (OneWireException e) {
+            log.error("Task execution failed.", e);
+        }
+        
     }
 
     /**
