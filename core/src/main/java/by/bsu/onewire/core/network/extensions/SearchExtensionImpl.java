@@ -14,16 +14,22 @@ import com.dalsemi.onewire.application.monitor.NetworkDeviceMonitor;
 import com.dalsemi.onewire.container.OneWireContainer;
 import com.dalsemi.onewire.utils.OWPath;
 
-public class SearchExtentionImpl extends ExtentionBase implements SearchExtension {
+/**
+ * <code>SearchExtension</code> implementation, use OWAPI network monitor.
+ * 
+ * @author Aliaksandr Zlobich
+ * 
+ */
+public class SearchExtensionImpl extends ExtensionBase implements SearchExtension {
 
     protected AbstractDeviceMonitor monitor;
     protected Map<Long, OWPath> devices;
 
-    public SearchExtentionImpl() {
+    public SearchExtensionImpl() {
         devices = new HashMap<Long, OWPath>();
     }
-    
-    public void initExtention() throws OneWireIOException, OneWireException{
+
+    public void initExtension() throws OneWireIOException, OneWireException {
         search();
     }
 
@@ -49,6 +55,9 @@ public class SearchExtentionImpl extends ExtentionBase implements SearchExtensio
         return result;
     }
 
+    /**
+     * Run network monitor, save results in inner data store.
+     */
     @Override
     public void search() throws OneWireIOException, OneWireException {
         final Vector<Long> arrivals = new Vector<Long>();
@@ -63,6 +72,9 @@ public class SearchExtentionImpl extends ExtentionBase implements SearchExtensio
         }
     }
 
+    /**
+     * Set network adapter, create network monitor for this adapter.
+     */
     @Override
     public void setAdapter(DSPortAdapter adapter) {
         super.setAdapter(adapter);
@@ -72,6 +84,9 @@ public class SearchExtentionImpl extends ExtentionBase implements SearchExtensio
         monitor.setMaxErrorCount(1);
     }
 
+    /**
+     * Check if device present in iner data store.
+     */
     @Override
     public boolean isDevicePresent(long address) {
         return devices.containsKey(address);

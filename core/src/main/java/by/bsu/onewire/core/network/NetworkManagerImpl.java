@@ -3,7 +3,7 @@ package by.bsu.onewire.core.network;
 import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 
-import by.bsu.onewire.core.network.extensions.ConvertExtention;
+import by.bsu.onewire.core.network.extensions.ConvertExtension;
 import by.bsu.onewire.core.network.extensions.SearchExtension;
 
 public class NetworkManagerImpl implements NetworkManager {
@@ -12,7 +12,7 @@ public class NetworkManagerImpl implements NetworkManager {
 
     private SearchExtension searchExtension;
 
-    private ConvertExtention convertExtention;
+    private ConvertExtension convertExtension;
 
     public AdapterProvider getAdapterProvider() {
         return adapterProvider;
@@ -30,12 +30,12 @@ public class NetworkManagerImpl implements NetworkManager {
         this.searchExtension = searchExtension;
     }
 
-    public ConvertExtention getConvertExtention() {
-        return convertExtention;
+    public ConvertExtension getConvertExtension() {
+        return convertExtension;
     }
 
-    public void setConvertExtention(ConvertExtention convertExtention) {
-        this.convertExtention = convertExtention;
+    public void setConvertExtention(ConvertExtension convertExtention) {
+        this.convertExtension = convertExtention;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package by.bsu.onewire.core.network.extensions;
 
-public interface ConvertExtention {
+public interface ConvertExtension {
 	void initiateConvertion();
 
 	void performPowerSupply();

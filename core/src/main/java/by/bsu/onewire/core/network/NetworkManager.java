@@ -3,7 +3,7 @@ package by.bsu.onewire.core.network;
 import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 
-import by.bsu.onewire.core.network.extensions.ConvertExtention;
+import by.bsu.onewire.core.network.extensions.ConvertExtension;
 import by.bsu.onewire.core.network.extensions.SearchExtension;
 
 /**
@@ -19,6 +19,6 @@ public interface NetworkManager {
 
     SearchExtension getSearchExtension();
 
-    ConvertExtention getConvertExtention();
+    ConvertExtension getConvertExtension();
 
 }

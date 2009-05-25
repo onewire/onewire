@@ -8,8 +8,8 @@
     <property name="portName" value="USB1" />
   </bean>
   <bean id="searchExtension"
-    class="by.bsu.onewire.core.network.extensions.SearchExtentionImpl"
-    singleton="true" init-method="initExtention">
+    class="by.bsu.onewire.core.network.extensions.SearchExtensionImpl"
+    singleton="true" init-method="initExtension">
     <property name="adapter">
       <bean
         class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
