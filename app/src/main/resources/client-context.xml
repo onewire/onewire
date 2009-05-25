@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+   "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="signalingModule" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:9001/signaling-service"/>
+        <property name="serviceInterface" value="by.bsu.onewire.core.modules.signaling.SignalingModule"/>
+    </bean>
+</beans>
