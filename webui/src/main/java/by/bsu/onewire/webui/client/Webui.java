@@ -1,5 +1,13 @@
 package by.bsu.onewire.webui.client;
 
+import java.util.List;
+
+import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
+import by.bsu.onewire.webui.client.rpc.GreetingService;
+import by.bsu.onewire.webui.client.rpc.GreetingServiceAsync;
+import by.bsu.onewire.webui.client.rpc.ServiceLocator;
+import by.bsu.onewire.webui.client.rpc.SignalingServiceAsync;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -28,7 +36,8 @@ public class Webui implements EntryPoint {
             + "attempting to contact the server. Please check your network " + "connection and try again.";
 
     /**
-     * Create a remote service proxy to talk to the server-side Greeting service.
+     * Create a remote service proxy to talk to the server-side Greeting
+     * service.
      */
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
@@ -99,9 +108,22 @@ public class Webui implements EntryPoint {
             }
 
             /**
-             * Send the name from the nameField to the server and wait for a response.
+             * Send the name from the nameField to the server and wait for a
+             * response.
              */
             private void sendNameToServer() {
+
+                SignalingServiceAsync signalingService = ServiceLocator.instance().getSignalingService();
+                signalingService.getElements(new AsyncCallback<List<SignalingElement>>() {
+                    public void onFailure(Throwable arg0) {
+
+                    }
+
+                    public void onSuccess(List<SignalingElement> arg0) {
+
+                    }
+
+                });
                 sendButton.setEnabled(false);
                 String textToServer = nameField.getText();
                 textToServerLabel.setText(textToServer);

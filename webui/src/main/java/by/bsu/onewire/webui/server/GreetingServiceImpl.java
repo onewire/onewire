@@ -1,6 +1,7 @@
 package by.bsu.onewire.webui.server;
 
-import by.bsu.onewire.webui.client.GreetingService;
+import by.bsu.onewire.webui.client.rpc.GreetingService;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**

@@ -1,4 +1,4 @@
-package by.bsu.onewire.webui.client;
+package by.bsu.onewire.webui.client.rpc;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

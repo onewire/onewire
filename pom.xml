@@ -16,10 +16,10 @@
         <mockito.version>1.7</mockito.version>
     </properties>
     <modules>
-        <module>core</module>
         <module>owapi</module>
-        <module>app</module>
+        <module>core</module>        
         <module>webui</module>
+        <module>app</module>
     </modules>
     <build>
         <plugins>
