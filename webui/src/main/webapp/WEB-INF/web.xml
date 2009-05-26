@@ -10,6 +10,18 @@
     <welcome-file>Webui.html</welcome-file>
   </welcome-file-list>
   
+   <!-- Spring context configuration path -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:web-context.xml</param-value>
+    </context-param>
+
+    <!-- Spring ContextLoaderListener -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+  
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
