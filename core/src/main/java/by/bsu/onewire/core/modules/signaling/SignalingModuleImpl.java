@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.bsu.onewire.core.modules.ModuleBase;
+import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 import by.bsu.onewire.core.sheduler.Task;
 import by.bsu.onewire.core.sheduler.TaskProperties;
 

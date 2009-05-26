@@ -9,9 +9,9 @@ import com.dalsemi.onewire.adapter.DSPortAdapter;
 import com.dalsemi.onewire.adapter.OneWireIOException;
 
 import by.bsu.onewire.core.BaseIntegrationTest;
-import by.bsu.onewire.core.modules.signaling.SignalingElement;
 import by.bsu.onewire.core.modules.signaling.SignalingModule;
 import by.bsu.onewire.core.modules.signaling.UpdateSignalingTask;
+import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 
 public class SignalingModuleIntegrationTest extends BaseIntegrationTest {
     @Test

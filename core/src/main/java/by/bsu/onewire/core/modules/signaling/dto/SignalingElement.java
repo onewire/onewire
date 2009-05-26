@@ -1,12 +1,12 @@
-package by.bsu.onewire.core.modules.signaling;
+package by.bsu.onewire.core.modules.signaling.dto;
 
 import java.io.Serializable;
 
-import com.dalsemi.onewire.utils.Address;
+import by.bsu.onewire.core.utils.AddressUtils;
 
-public class SignalingElement implements Serializable{
+public class SignalingElement implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     private boolean enabled;
     private boolean alarm;
     private long id;
@@ -44,17 +44,17 @@ public class SignalingElement implements Serializable{
     public void setKeyAddress(long keyAddress) {
         this.keyAddress = keyAddress;
     }
-    
-    public void setKeyAddressString(String address){
-        setKeyAddress(Address.toLong(address));
+
+    public void setKeyAddressString(String address) {
+        setKeyAddress(AddressUtils.toLong(address));
     }
 
     public long getLabelAddress() {
         return labelAddress;
     }
-    
-    public void setLabelAddressString(String address){
-        setLabelAddress(Address.toLong(address));
+
+    public void setLabelAddressString(String address) {
+        setLabelAddress(AddressUtils.toLong(address));
     }
 
     public void setLabelAddress(long labelAddress) {
@@ -64,13 +64,13 @@ public class SignalingElement implements Serializable{
     @Override
     public String toString() {
         final StringBuffer buffer = new StringBuffer();
-        
+
         buffer.append("((id=");
         buffer.append(id);
         buffer.append("), (key=");
-        buffer.append(Address.toString(keyAddress));
+        buffer.append(AddressUtils.toString(keyAddress));
         buffer.append("), (label=");
-        buffer.append(Address.toString(labelAddress));
+        buffer.append(AddressUtils.toString(labelAddress));
         buffer.append("), (enabled=");
         buffer.append(enabled);
         buffer.append("), (alarm=");

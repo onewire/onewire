@@ -3,6 +3,7 @@ package by.bsu.onewire.core.modules.signaling;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 import by.bsu.onewire.core.network.extensions.SearchExtension;
 import by.bsu.onewire.core.sheduler.TaskBase;
 
