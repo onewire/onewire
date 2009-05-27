@@ -37,6 +37,11 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+      <groupId>gwt-mvc</groupId>
+      <artifactId>gwt-mvc</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring</artifactId>
       <version>${spring.version}</version>
@@ -175,6 +180,11 @@
       <releases>
         <enabled>true</enabled>
       </releases>
+    </repository>
+    <repository>
+      <id>gwt-mvc</id>
+      <name>GWT MVC repository at googlecode</name>
+      <url>http://gwt-mvc.googlecode.com/svn/repository</url>
     </repository>
   </repositories>
   <pluginRepositories>
