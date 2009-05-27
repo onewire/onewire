@@ -8,10 +8,8 @@ import by.bsu.onewire.core.modules.signaling.SignalingModule;
 import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 import by.bsu.onewire.webui.client.rpc.SignalingService;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
 @SuppressWarnings("serial")
-public class SignalingServiceImpl extends RemoteServiceServlet implements SignalingService {
+public class SignalingServiceImpl extends SpringAwareServletBase implements SignalingService {
 
     @Autowired
     SignalingModule signalingModule;

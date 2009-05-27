@@ -3,13 +3,10 @@ package by.bsu.onewire.webui.client;
 import java.util.List;
 
 import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
-import by.bsu.onewire.webui.client.rpc.GreetingService;
-import by.bsu.onewire.webui.client.rpc.GreetingServiceAsync;
 import by.bsu.onewire.webui.client.rpc.ServiceLocator;
 import by.bsu.onewire.webui.client.rpc.SignalingServiceAsync;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -35,11 +32,7 @@ public class Webui implements EntryPoint {
     private static final String SERVER_ERROR = "An error occurred while "
             + "attempting to contact the server. Please check your network " + "connection and try again.";
 
-    /**
-     * Create a remote service proxy to talk to the server-side Greeting
-     * service.
-     */
-    private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    
 
     /**
      * This is the entry point method.
@@ -116,21 +109,7 @@ public class Webui implements EntryPoint {
                 SignalingServiceAsync signalingService = ServiceLocator.instance().getSignalingService();
                 signalingService.getElements(new AsyncCallback<List<SignalingElement>>() {
                     public void onFailure(Throwable arg0) {
-
-                    }
-
-                    public void onSuccess(List<SignalingElement> arg0) {
-
-                    }
-
-                });
-                sendButton.setEnabled(false);
-                String textToServer = nameField.getText();
-                textToServerLabel.setText(textToServer);
-                serverResponseLabel.setText("");
-                greetingService.greetServer(textToServer, new AsyncCallback<String>() {
-                    public void onFailure(Throwable caught) {
-                        // Show the RPC error message to the user
+                     // Show the RPC error message to the user
                         dialogBox.setText("Remote Procedure Call - Failure");
                         serverResponseLabel.addStyleName("serverResponseLabelError");
                         serverResponseLabel.setHTML(SERVER_ERROR);
@@ -138,14 +117,26 @@ public class Webui implements EntryPoint {
                         closeButton.setFocus(true);
                     }
 
-                    public void onSuccess(String result) {
+                    public void onSuccess(List<SignalingElement> elements) {
+                        StringBuffer result = new StringBuffer();
+                        for ( SignalingElement element : elements) {
+                            result.append(element.toString());
+                            result.append("<br/>");
+                        }
+                        
                         dialogBox.setText("Remote Procedure Call");
                         serverResponseLabel.removeStyleName("serverResponseLabelError");
-                        serverResponseLabel.setHTML(result);
+                        serverResponseLabel.setHTML(result.toString());
                         dialogBox.center();
                         closeButton.setFocus(true);
                     }
+
                 });
+                sendButton.setEnabled(false);
+                String textToServer = nameField.getText();
+                textToServerLabel.setText(textToServer);
+                serverResponseLabel.setText("");
+                
             }
         }
 
