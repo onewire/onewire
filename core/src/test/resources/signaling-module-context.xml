@@ -5,6 +5,7 @@
   <bean name="signalingElement" class="by.bsu.onewire.core.modules.signaling.dto.SignalingElement">
     <property name="enabled" value="true"/>
     <property name="id" value="1"/>
+    <property name="title" value="Window sensor: 1"/>
     <property name="keyAddressString" value="1B0000001EDAF205"/>
     <property name="labelAddressString" value="F000000AC6CD0301"/>
   </bean>
