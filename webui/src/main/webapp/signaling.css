@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.signaling-List {
+    border-bottom: 1px solid #666666;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
+    font-size: 80%;
+}
+
+.signaling-List td {
+    border-bottom: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    padding: 2px 0 2px 10px;
+}
+
+.signaling-ListHeader td {
+    border-top: medium none;
+}
+
+.signaling-ListHeader {
+    background: #C1EEC8 url(gradient.gif) repeat-x scroll 0 -1px;
+    font-weight: bold;
+}
+
+.signaling-ListHeader .gwt-HTML {
+    font-weight: bold;
+}
+
+.signaling-ListHeader td {
+    border-bottom: 1px solid #666666;
+    border-top: 1px solid #666666;
+    padding: 2px 0 2px 10px;
+}
