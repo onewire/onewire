@@ -12,36 +12,48 @@ import com.googlecode.gwtmvc.client.Model;
 
 public class SignalingModel extends Model<List<SignalingElement>> {
 
-    private static final int UPDATE_INTERVAL = 500;
+    private static final int UPDATE_INTERVAL = 1000;
 
     private SignalingServiceAsync service;
+    private boolean update;
 
     private Timer updateModelTimer;
-    
+
     public SignalingModel() {
-        updateModelTimer = new Timer(){
+        updateModelTimer = new Timer() {
             @Override
             public void run() {
                 updateModelFromServer();
             }
         };
-        
-        init();
+        update = true;
     }
 
     @Override
     protected void init() {
         service = ServiceLocator.instance().getSignalingService();
-        updateModelFromServer();
     }
 
-    protected void updateModelFromServer() {
+    public void updateModelFromServer() {
         service.getElements(new BaseCallback<List<SignalingElement>>() {
             public void onSuccess(List<SignalingElement> result) {
                 value = result;
                 onChange();
-                updateModelTimer.schedule(UPDATE_INTERVAL);
+                if (update) {
+                    updateModelTimer.schedule(UPDATE_INTERVAL);
+                }
             }
         });
     }
+
+    public void stopUpdate() {
+        updateModelTimer.cancel();
+        update = false;
+    }
+    
+    public void startUpdate() {
+        update = true;
+        updateModelTimer.schedule(UPDATE_INTERVAL);
+    }
+
 }

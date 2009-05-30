@@ -29,7 +29,7 @@ public abstract class ServiceLocator
         else
         {
             instance = new ServerServiceLocator();
-            instance = new MockServiceLocator();
+//            instance = new MockServiceLocator();
         }
     }
 

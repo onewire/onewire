@@ -32,6 +32,11 @@ public class SignalingView extends View {
     @SuppressWarnings("unchecked")
     public SignalingView(String key, Controller controller, ModelForView[] models) {
         super(key, controller, models);
+        init();
+    }
+
+    @Override
+    public void init() {
         FlowPanel panel = new FlowPanel();
         content = new Grid(CONSTANT_ROWS_COUNT, COLUMNS_COUNT);
         content.setWidth("700px");
@@ -39,6 +44,12 @@ public class SignalingView extends View {
         content.setCellPadding(0);
         content.addStyleName(StyleConstants.SIGNALING_LIST);
         content.setVisible(false);
+        
+        content.getColumnFormatter().setWidth(ID_COLUMN_INDEX, "50");
+        content.getColumnFormatter().setWidth(TITLE_COLUMN_INDEX, "300");
+        content.getColumnFormatter().setWidth(STATUS_COLUMN_INDEX, "200");
+        content.getColumnFormatter().setWidth(STATE_COLUMN_INDEX, "150");
+        
         content.setHTML(HEADER_ROW_INDEX, ID_COLUMN_INDEX, constants.idColumn());
         content.setHTML(HEADER_ROW_INDEX, TITLE_COLUMN_INDEX, constants.titleColumn());
         content.setHTML(HEADER_ROW_INDEX, STATUS_COLUMN_INDEX, constants.statusColumn());
@@ -46,11 +57,6 @@ public class SignalingView extends View {
         content.getRowFormatter().setStyleName(0, StyleConstants.SIGNALING_LIST_HEADER);
         panel.add(content);
         initWidget(panel);
-    }
-
-    @Override
-    public void init() {
-
     }
 
     @SuppressWarnings("unchecked")
