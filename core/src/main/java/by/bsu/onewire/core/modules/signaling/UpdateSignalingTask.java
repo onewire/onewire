@@ -38,7 +38,7 @@ public class UpdateSignalingTask extends TaskBase {
         if (!element.isEnabled()) {
             return;
         }
-        element.setAlarm(true);
+        boolean alarm = true;
         try {
             final OneWireContainer container = search.getDevice(element.getKeyAddress());
             if (container instanceof SwitchContainer) {
@@ -50,7 +50,7 @@ public class UpdateSignalingTask extends TaskBase {
                 }
             }
             final boolean labelPresent = search.isDevicePresent(element.getLabelAddress());
-            element.setAlarm(!labelPresent);
+            alarm = !labelPresent;
             if (!labelPresent && log.isInfoEnabled()) {
                 log.info("Security module activate alarm: " + element);
             }
@@ -59,6 +59,7 @@ public class UpdateSignalingTask extends TaskBase {
         } catch (OneWireException e) {
             log.error("Check signaling crash.", e);
         }
+        element.setAlarm(alarm);
     }
 
 }
