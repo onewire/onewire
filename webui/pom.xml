@@ -78,15 +78,20 @@
         <version>1.1-SNAPSHOT</version>
         <executions>
           <execution>
+            <goals>
+              <goal>i18n</goal>
+              <goal>compile</goal>
+            </goals>
             <configuration>
               <output>${gwt.output.directory}</output>
               <webXml>${gwt.output.directory}/WEB-INF/web.xml</webXml>
               <hostedWebapp>${gwt.output.directory}</hostedWebapp>
+
+              <generateDirectory>${basedir}/src/main/java/</generateDirectory>
+              <i18nConstantsBundles>
+                <i18nConstantsBundle>by.bsu.onewire.webui.client.i18n.SignalingConstants</i18nConstantsBundle>
+              </i18nConstantsBundles>
             </configuration>
-            <goals>
-              <goal>compile</goal>
-              <!--<goal>generateAsync</goal>-->
-            </goals>
           </execution>
         </executions>
       </plugin>
@@ -180,6 +185,11 @@
       <releases>
         <enabled>true</enabled>
       </releases>
+    </repository>
+    <repository>
+      <id>gwt-mvc</id>
+      <name>GWT MVC repository at googlecode</name>
+      <url>http://gwt-mvc.googlecode.com/svn/repository</url>
     </repository>
   </repositories>
   <pluginRepositories>
