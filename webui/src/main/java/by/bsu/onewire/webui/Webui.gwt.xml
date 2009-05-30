@@ -9,6 +9,7 @@
   <!-- any one of the following lines.                            -->
   <inherits name='com.google.gwt.user.theme.standard.Standard'/>
   <inherits name='by.bsu.onewire.core'/>
+  <inherits name='com.googlecode.gwtmvc.GwtMvc'/>
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 

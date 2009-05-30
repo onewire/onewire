@@ -181,11 +181,6 @@
         <enabled>true</enabled>
       </releases>
     </repository>
-    <repository>
-      <id>gwt-mvc</id>
-      <name>GWT MVC repository at googlecode</name>
-      <url>http://gwt-mvc.googlecode.com/svn/repository</url>
-    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
