@@ -1,6 +1,8 @@
 package by.bsu.onewire.webui.client.rpc;
 
 
+import by.bsu.onewire.webui.client.rpc.mock.SignalingServiceMockImpl;
+
 import com.google.gwt.core.client.GWT;
 
 /**
@@ -27,6 +29,7 @@ public abstract class ServiceLocator
         else
         {
             instance = new ServerServiceLocator();
+            instance = new MockServiceLocator();
         }
     }
 
@@ -49,7 +52,7 @@ public abstract class ServiceLocator
     {
         @Override
         public SignalingServiceAsync getSignalingService() {
-            return null;
+            return new SignalingServiceMockImpl();
         }
     }
 
