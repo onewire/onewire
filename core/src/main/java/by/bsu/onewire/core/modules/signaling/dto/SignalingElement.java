@@ -12,6 +12,7 @@ public class SignalingElement implements Serializable {
     private long id;
     private long keyAddress;
     private long labelAddress;
+    private String title;
 
     public boolean isEnabled() {
         return enabled;
@@ -60,22 +61,34 @@ public class SignalingElement implements Serializable {
     public void setLabelAddress(long labelAddress) {
         this.labelAddress = labelAddress;
     }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     @Override
     public String toString() {
         final StringBuffer buffer = new StringBuffer();
 
-        buffer.append("((id=");
+        buffer.append("SignalingElement: [id=");
         buffer.append(id);
-        buffer.append("), (key=");
+        if (title != null) {
+            buffer.append(", title=");
+            buffer.append(title);
+        }
+        buffer.append(", key=");
         buffer.append(AddressUtils.toString(keyAddress));
-        buffer.append("), (label=");
+        buffer.append(", label=");
         buffer.append(AddressUtils.toString(labelAddress));
-        buffer.append("), (enabled=");
+        buffer.append(", enabled=");
         buffer.append(enabled);
-        buffer.append("), (alarm=");
+        buffer.append(", alarm=");
         buffer.append(alarm);
-        buffer.append("))");
+        buffer.append("]");
         return buffer.toString();
     }
 }
