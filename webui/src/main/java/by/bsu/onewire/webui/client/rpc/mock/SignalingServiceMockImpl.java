@@ -18,6 +18,7 @@ public class SignalingServiceMockImpl implements SignalingServiceAsync {
         element.setEnabled(true);
         element.setAlarm(false);
         element.setId(1);
+        element.setTitle("Window sensor 1");
         element.setLabelAddress(238925926L);
         element.setKeyAddress(3457383838L);
         result.add(element);
@@ -26,6 +27,7 @@ public class SignalingServiceMockImpl implements SignalingServiceAsync {
         element.setEnabled(true);
         element.setAlarm(false);
         element.setId(2);
+        element.setTitle("Window sensor 2");
         element.setLabelAddress(2381325926L);
         element.setKeyAddress(34573483838L);
         result.add(element);
