@@ -4,7 +4,7 @@ import java.util.List;
 
 import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 import by.bsu.onewire.webui.client.StyleConstants;
-import by.bsu.onewire.webui.client.i18n.SignalingConstants;
+import by.bsu.onewire.i18n.SignalingConstants;
 import by.bsu.onewire.webui.client.model.SignalingModel;
 
 import com.google.gwt.core.client.GWT;

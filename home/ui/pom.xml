@@ -16,6 +16,7 @@
   </properties>
   <modules>
     <module>webui</module>
+    <module>i18n</module>
   </modules>
 
 </project>

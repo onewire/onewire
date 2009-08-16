@@ -10,6 +10,7 @@
   <inherits name='com.google.gwt.user.theme.standard.Standard'/>
   <inherits name="com.google.gwt.i18n.I18N"/>
   <inherits name='by.bsu.onewire.core'/>
+  <inherits name='by.bsu.onewire.i18n'/>
   <inherits name='com.googlecode.gwtmvc.GwtMvc'/>
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->

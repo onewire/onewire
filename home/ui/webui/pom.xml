@@ -67,6 +67,11 @@
       <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>by.bsu.onewire</groupId>
+      <artifactId>i18n</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -79,7 +84,6 @@
         <executions>
           <execution>
             <goals>
-              <goal>i18n</goal>
               <goal>compile</goal>
             </goals>
             <configuration>
