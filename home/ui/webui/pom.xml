@@ -13,7 +13,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <properties>
-    <gwt.version>1.6.4</gwt.version>
     <runTarget>Webui.html</runTarget>
     <gwt.output.directory>${basedir}/war</gwt.output.directory>
   </properties>

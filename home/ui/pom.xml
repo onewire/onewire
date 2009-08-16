@@ -11,7 +11,9 @@
         <artifactId>onewire</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-   
+    <properties>
+        <gwt.version>1.7.0</gwt.version>
+    </properties>
     <modules>
         <module>webui</module>
     </modules>
