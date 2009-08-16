@@ -16,7 +16,6 @@
         <mockito.version>1.7</mockito.version>
     </properties>
     <modules>
-        <module>owapi</module>
         <module>core</module>        
         <module>webui</module>
         <module>app</module>
