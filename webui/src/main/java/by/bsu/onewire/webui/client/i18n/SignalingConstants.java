@@ -7,11 +7,11 @@ package by.bsu.onewire.webui.client.i18n;
 public interface SignalingConstants extends com.google.gwt.i18n.client.Constants {
   
   /**
-   * Translated "ALARM!".
+   * Translated "<span style=\"color: red;\">ALARM!</span>".
    * 
-   * @return translated "ALARM!"
+   * @return translated "<span style=\"color: red;\">ALARM!</span>"
    */
-  @DefaultStringValue("ALARM!")
+  @DefaultStringValue("<span style=\"color: red;\">ALARM!</span>")
   @Key("alarmState")
   String alarmState();
 
