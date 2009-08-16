@@ -2,7 +2,7 @@ package by.bsu.onewire.webui.client.i18n;
 
 /**
  * Interface to represent the constants contained in resource bundle:
- * 	'E:/alex/myprogs/one-wire/git/onewire/home/webui/src/main/java/by/bsu/onewire/webui/client/i18n/SignalingConstants.properties'.
+ * 	'E:/alex/myprogs/one-wire/git/onewire/home/ui/webui/src/main/java/by/bsu/onewire/webui/client/i18n/SignalingConstants.properties'.
  */
 public interface SignalingConstants extends com.google.gwt.i18n.client.Constants {
   

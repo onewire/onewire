@@ -8,8 +8,8 @@
   <packaging>war</packaging>
   <name>webui</name>
   <parent>
-    <groupId>by.bsu</groupId>
-    <artifactId>onewire</artifactId>
+    <groupId>by.bsu.onewire</groupId>
+    <artifactId>ui</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <properties>
@@ -69,6 +69,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <outputDirectory>${gwt.output.directory}/WEB-INF/classes</outputDirectory>
     <plugins>
