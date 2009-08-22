@@ -42,7 +42,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>${gwt.plugin.version}</version>
         <executions>
           <execution>
             <goals>
@@ -96,41 +96,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
-  <!--
-    Enable Codehaus snapshot repository, remove when gwt-maven-plugin
-    1.1 has been released
-  -->
-  <repositories>
-    <repository>
-      <id>Codehaus Snapshots</id>
-      <url>http://snapshots.repository.codehaus.org/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-    <repository>
-      <id>gwt-mvc</id>
-      <name>GWT MVC repository at googlecode</name>
-      <url>http://gwt-mvc.googlecode.com/svn/repository</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>Codehaus Snapshots</id>
-      <url>http://snapshots.repository.codehaus.org/</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-        <!-- Workaround for MNG-2974, see note below -->
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
 </project>
