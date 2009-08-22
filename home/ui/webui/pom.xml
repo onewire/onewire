@@ -14,7 +14,7 @@
   </parent>
   <properties>
     <runTarget>Webui.html</runTarget>
-    <gwt.output.directory>${basedir}/war</gwt.output.directory>
+    <gwt.shell.directory>${project.build.directory}/gwt-shell</gwt.shell.directory>
   </properties>
   <dependencies>
     <!-- GWT dependencies (from maven "central" repo) -->
@@ -75,27 +75,20 @@
   </dependencies>
 
   <build>
-    <outputDirectory>${gwt.output.directory}/WEB-INF/classes</outputDirectory>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
         <version>1.1-SNAPSHOT</version>
+        <configuration>
+          <hostedWebapp>${gwt.shell.directory}</hostedWebapp>
+          <runTarget>Webui.html</runTarget>
+        </configuration>
         <executions>
           <execution>
             <goals>
               <goal>compile</goal>
             </goals>
-            <configuration>
-              <output>${gwt.output.directory}</output>
-              <webXml>${gwt.output.directory}/WEB-INF/web.xml</webXml>
-              <hostedWebapp>${gwt.output.directory}</hostedWebapp>
-
-              <generateDirectory>${basedir}/src/main/java/</generateDirectory>
-              <i18nConstantsBundles>
-                <i18nConstantsBundle>by.bsu.onewire.webui.client.i18n.SignalingConstants</i18nConstantsBundle>
-              </i18nConstantsBundles>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -110,57 +103,19 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>LATEST</version>
-        <configuration>
-          <warSourceDirectory>${gwt.output.directory}</warSourceDirectory>
-          <!--
-            We don't need to include any sources to copy to thetarget,
-            because the target *is* our source.
-          -->
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.3</version>
         <executions>
           <execution>
-            <!--
-              This execution copies the war folder to the gwt transient
-              output directory
-            -->
-            <id>war-folder-creation</id>
+            <id>shell folder creation</id>
             <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${gwt.output.directory}</outputDirectory>
+              <outputDirectory>${gwt.shell.directory}</outputDirectory>
               <resources>
                 <resource>
                   <directory>src/main/webapp</directory>
-                  <!-- I don't filter my resources but you're free to do it -->
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <!--
-              This execution copies the compiler plugin output and
-              resources to the gwt transient output directory
-            -->
-            <id>war-classes-copy</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${gwt.output.directory}/WEB-INF/classes</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>src/main/resources</directory>
                   <filtering>false</filtering>
                 </resource>
               </resources>
