@@ -1,8 +1,8 @@
-package by.bsu.onewire.core.modules.signaling;
+package by.bsu.onewire.common.modules.signaling;
 
 import java.util.List;
 
-import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingElement;
 
 public interface SignalingModule {
 	List<SignalingElement> getElements();

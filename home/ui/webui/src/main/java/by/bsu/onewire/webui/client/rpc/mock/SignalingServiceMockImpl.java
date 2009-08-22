@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingElement;
 import by.bsu.onewire.webui.client.rpc.SignalingServiceAsync;
 
 public class SignalingServiceMockImpl implements SignalingServiceAsync {

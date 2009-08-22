@@ -10,6 +10,6 @@
   <bean id="signalingModule" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
     <property name="serviceUrl" value="rmi://localhost:9001/signaling-service" />
     <property name="serviceInterface"
-      value="by.bsu.onewire.core.modules.signaling.SignalingModule" />
+      value="by.bsu.onewire.common.modules.signaling.SignalingModule" />
   </bean>
 </beans>

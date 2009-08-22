@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import by.bsu.onewire.core.modules.signaling.SignalingModule;
-import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingModule;
 import by.bsu.onewire.webui.client.rpc.SignalingService;
 
 @SuppressWarnings("serial")

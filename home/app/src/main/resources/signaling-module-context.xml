@@ -2,7 +2,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
    "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <bean name="signalingElement" class="by.bsu.onewire.core.modules.signaling.dto.SignalingElement">
+  <bean name="signalingElement" class="by.bsu.onewire.common.modules.signaling.SignalingElement">
     <property name="enabled" value="true"/>
     <property name="id" value="1"/>
     <property name="title" value="Window sensor: 1"/>
@@ -21,7 +21,7 @@
   <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
         <property name="serviceName" value="signaling-service"/>
         <property name="service" ref="signalingModule"/>
-        <property name="serviceInterface" value="by.bsu.onewire.core.modules.signaling.SignalingModule"/>
+        <property name="serviceInterface" value="by.bsu.onewire.common.modules.signaling.SignalingModule"/>
         <property name="registryPort" value="9001"/>
   </bean>
 </beans>

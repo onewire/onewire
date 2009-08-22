@@ -1,8 +1,8 @@
-package by.bsu.onewire.core.modules.signaling.dto;
+package by.bsu.onewire.common.modules.signaling;
 
 import java.io.Serializable;
 
-import by.bsu.onewire.core.utils.AddressUtils;
+import by.bsu.onewire.common.utils.AddressUtils;
 
 public class SignalingElement implements Serializable {
     private static final long serialVersionUID = 1L;

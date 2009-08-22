@@ -3,8 +3,9 @@ package by.bsu.onewire.core.modules.signaling;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.bsu.onewire.common.modules.signaling.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingModule;
 import by.bsu.onewire.core.modules.ModuleBase;
-import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
 import by.bsu.onewire.core.sheduler.Task;
 import by.bsu.onewire.core.sheduler.TaskProperties;
 

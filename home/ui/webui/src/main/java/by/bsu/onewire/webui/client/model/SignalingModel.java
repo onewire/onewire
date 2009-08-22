@@ -2,7 +2,7 @@ package by.bsu.onewire.webui.client.model;
 
 import java.util.List;
 
-import by.bsu.onewire.core.modules.signaling.dto.SignalingElement;
+import by.bsu.onewire.common.modules.signaling.SignalingElement;
 import by.bsu.onewire.webui.client.rpc.BaseCallback;
 import by.bsu.onewire.webui.client.rpc.ServiceLocator;
 import by.bsu.onewire.webui.client.rpc.SignalingServiceAsync;

@@ -3,6 +3,8 @@ package by.bsu.onewire.core.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import by.bsu.onewire.common.utils.AddressUtils;
+
 import com.dalsemi.onewire.utils.Address;
 
 public class AddressUtilsTest {

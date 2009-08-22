@@ -1,4 +1,4 @@
-package by.bsu.onewire.core.utils;
+package by.bsu.onewire.common.utils;
 
 public class AddressUtils {
 
