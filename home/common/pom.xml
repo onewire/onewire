@@ -26,29 +26,11 @@
     </dependency>
   </dependencies>
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-sources</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${basedir}/target/classes</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>src/main/java</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
   </build>
 </project>
