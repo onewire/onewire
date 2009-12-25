@@ -1,4 +1,4 @@
-package by.bsu.onewire.core.utils;
+package by.bsu.onewire.common.utils;
 
 import org.junit.Assert;
 import org.junit.Test;
