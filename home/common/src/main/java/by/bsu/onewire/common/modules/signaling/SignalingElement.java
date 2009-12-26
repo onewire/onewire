@@ -49,6 +49,10 @@ public class SignalingElement implements Serializable {
     public void setKeyAddressString(String address) {
         setKeyAddress(AddressUtils.toLong(address));
     }
+    
+    public String getKeyAddressString() {
+        return AddressUtils.toString(keyAddress);
+    }
 
     public long getLabelAddress() {
         return labelAddress;
@@ -56,6 +60,10 @@ public class SignalingElement implements Serializable {
 
     public void setLabelAddressString(String address) {
         setLabelAddress(AddressUtils.toLong(address));
+    }
+    
+    public String getLabelAddressString() {
+        return AddressUtils.toString(labelAddress);
     }
 
     public void setLabelAddress(long labelAddress) {
