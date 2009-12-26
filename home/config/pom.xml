@@ -18,11 +18,16 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-    <!--dependency>
-      <groupId>com.thoughtworks.xstream</groupId>
-      <artifactId>xstream</artifactId>
-      <version>${xstream.version}</version>
-    </dependency-->
+    <dependency>
+      <groupId>org.codehaus.castor</groupId>
+      <artifactId>castor-xml</artifactId>
+      <version>${castor.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.castor</groupId>
+      <artifactId>castor-core</artifactId>
+      <version>${castor.version}</version>
+    </dependency>
     <dependency>
       <groupId>by.bsu.onewire</groupId>
       <artifactId>common</artifactId>
