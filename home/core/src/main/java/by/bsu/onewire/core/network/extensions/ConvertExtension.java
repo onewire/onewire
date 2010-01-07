@@ -1,7 +1,18 @@
 package by.bsu.onewire.core.network.extensions;
 
-public interface ConvertExtension {
-	void initiateConvertion();
+import com.dalsemi.onewire.OneWireException;
+import com.dalsemi.onewire.adapter.OneWireIOException;
 
-	void performPowerSupply();
+/**
+ * Extension provide functionality to initiate temperature conversion.
+ * 
+ * @author Aliaksandr Zlobich
+ * 
+ */
+public interface ConvertExtension {
+
+    /**
+     * Initiate temperature conversion and wait for it.
+     */
+    void doTemperatureConversion() throws OneWireIOException, OneWireException;
 }

@@ -18,6 +18,14 @@
       </bean>
     </property>
   </bean>
+  <bean id="convertExtension" class="by.bsu.onewire.core.network.extensions.ConvertExtensionImpl" singleton="true">
+    <property name="adapter">
+      <bean class="org.springframework.beans.factory.config.PropertyPathFactoryBean">
+        <property name="targetObject" ref="adapterProvider" />
+        <property name="propertyPath" value="adapter" />
+      </bean>
+    </property>
+  </bean>
   <bean id="networkManager" class="by.bsu.onewire.core.network.NetworkManagerImpl"  singleton="true">
     <property name="adapterProvider" ref="adapterProvider" />
     <property name="searchExtension" ref="searchExtension" />
