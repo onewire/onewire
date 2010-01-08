@@ -18,6 +18,16 @@ public class PlainSensor implements Sensor {
     private String label;
 
     private String description;
+    
+    private String address;
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     @Override
     public SensorType getSensorType() {

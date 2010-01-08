@@ -8,6 +8,16 @@ package by.bsu.onewire.common.device;
 public interface Device {
 
     /**
+     * Retrieve device unique address. 
+     */
+    public String getAddress();
+    
+    /**
+     * Change device address. 
+     */
+    public void setAddress(String address);
+    
+    /**
      * Return device label. Device label is a string that associate with this
      * device.
      */
