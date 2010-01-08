@@ -10,18 +10,18 @@ public interface Device {
     /**
      * Retrieve device unique address. 
      */
-    public String getAddress();
+    String getAddress();
     
     /**
      * Change device address. 
      */
-    public void setAddress(String address);
+    void setAddress(String address);
     
     /**
      * Return device label. Device label is a string that associate with this
      * device.
      */
-    public String getLabel();
+    String getLabel();
 
     /**
      * Set device label
@@ -29,17 +29,17 @@ public interface Device {
      * @param label
      *            a new string that should be associated with this device.
      */
-    public void setLabel(String label);
+    void setLabel(String label);
 
     /**
      * Get text description of this device
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Set text description of this device
      */
-    public void setDescription(String description);
+    void setDescription(String description);
 
     /**
      * Get type of this device.
@@ -47,6 +47,6 @@ public interface Device {
      * @return object of <code>DeviceType</code> class that represent type of
      *         this device
      */
-    public DeviceType getDeviceType();
+    DeviceType getDeviceType();
 
 }

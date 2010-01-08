@@ -13,10 +13,10 @@ public interface Sensor extends Device {
     /**
      * Return sensor value.
      */
-    public double getValue();
+    double getValue();
 
     /**
      * Return sensor type. See {@link SensorType} for available types.
      */
-    public SensorType getSensorType();
+    SensorType getSensorType();
 }
