@@ -1,4 +1,4 @@
-package by.bsu.onewire.core.device;
+package by.bsu.onewire.common.device;
 
 /**
  * This interface provide representation of OneWire device.

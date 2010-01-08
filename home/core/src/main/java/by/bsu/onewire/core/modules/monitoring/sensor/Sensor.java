@@ -1,6 +1,6 @@
 package by.bsu.onewire.core.modules.monitoring.sensor;
 
-import by.bsu.onewire.core.device.Device;
+import by.bsu.onewire.common.device.Device;
 
 /**
  * Interface for sensor devices, e.g. temperature or humidity sensor.

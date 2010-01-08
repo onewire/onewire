@@ -1,6 +1,6 @@
 package by.bsu.onewire.core.modules.monitoring.sensor;
 
-import by.bsu.onewire.core.device.DeviceType;
+import by.bsu.onewire.common.device.DeviceType;
 
 /**
  * Plain sensor implementation, just bean class. It doesn't do any actions like
