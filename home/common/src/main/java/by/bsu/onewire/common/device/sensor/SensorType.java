@@ -1,4 +1,4 @@
-package by.bsu.onewire.core.modules.monitoring.sensor;
+package by.bsu.onewire.common.device.sensor;
 
 public enum SensorType {
 

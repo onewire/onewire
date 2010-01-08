@@ -2,8 +2,8 @@ package by.bsu.onewire.core.modules.monitoring;
 
 import java.util.List;
 
+import by.bsu.onewire.common.device.sensor.Sensor;
 import by.bsu.onewire.core.modules.ModuleBase;
-import by.bsu.onewire.core.modules.monitoring.sensor.Sensor;
 
 public class MonitoringModuleImpl extends ModuleBase implements MonitoringModule{
 
