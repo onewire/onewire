@@ -1,4 +1,4 @@
-package by.bsu.onewire.core.modules.monitoring;
+package by.bsu.onewire.common.modules.monitoring;
 
 import java.util.List;
 
